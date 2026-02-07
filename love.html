@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day</title>
+
+<style>
+
+/* Background */
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Poppins', sans-serif;
+    background: url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23") no-repeat center/cover;
+    overflow:hidden;
+}
+
+/* Card */
+.card{
+    background: rgba(255,255,255,0.85);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    width:420px;
+    backdrop-filter: blur(10px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* Title sparkle glow */
+.title{
+    font-size:40px;
+    color:#ff004c;
+    text-shadow:0 0 10px pink, 0 0 20px red;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 5px pink;}
+    to{ text-shadow:0 0 25px red;}
+}
+
+/* Rose emoji float */
+.rose{
+    font-size:70px;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* Message */
+.msg{
+    margin-top:15px;
+    font-size:18px;
+    color:#333;
+    line-height:1.6;
+}
+
+/* Name box */
+input{
+    margin-top:20px;
+    padding:10px;
+    width:80%;
+    border-radius:20px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+/* Button */
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ff004c;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#cc003d;
+}
+
+/* Falling roses */
+.rose-fall{
+    position:absolute;
+    top:-50px;
+    font-size:30px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(110vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="rose">🌹</div>
+
+<h1 class="title">Happy Rose Day</h1>
+
+<p class="msg">
+You are as beautiful as a rose 🌹<br>
+May your life always be filled with love and happiness.
+</p>
+
+<input type="text" id="name" placeholder="Enter Name ❤️">
+
+<br>
+
+<button onclick="wish()">Send Wishes</button>
+
+</div>
+
+<script>
+
+/* Wish Button */
+function wish(){
+    let name = document.getElementById("name").value;
+    if(name==="") name="Someone Special";
+    alert("Happy Rose Day 🌹❤️ " + name);
+}
+
+/* Falling Roses Generator */
+for(let i=0;i<25;i++){
+    let rose = document.createElement("div");
+    rose.innerHTML="🌹";
+    rose.classList.add("rose-fall");
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.animationDuration=(3+Math.random()*5)+"s";
+    rose.style.opacity=Math.random();
+    document.body.appendChild(rose);
+}
+
+</script>
+
+</body>
+</html>
